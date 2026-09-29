@@ -12,6 +12,7 @@ Example implementations include:
 - ROI-based quantitative analysis
 - Relative relaxation-time difference (RRTD) calculation
 - Basic visualization and statistical analysis of quantitative MRI data
+- Pixel-wise quantitative relaxation mapping using synthetic MRI data
 
 ## Programming
 
