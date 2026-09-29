@@ -1,34 +1,41 @@
 # Quantitative MRI Analysis
 
-This repository contains example analysis tools for quantitative MRI and relaxation mapping.
+This repository contains example analysis workflows for quantitative MRI and relaxation mapping.
 
-The examples are based on generalized workflows used in my research on quantitative tissue characterization, including relaxation-time fitting, ROI-based analysis, and quantitative comparison of tissue contrast.
+The examples are based on generalized workflows used in my research on quantitative tissue characterization. They demonstrate relaxation-time fitting, quantitative tissue comparison, ROI-based analysis, and pixel-wise relaxation mapping using synthetic data.
 
 ## Methods
 
 Example implementations include:
 
-- T1, T2, and T1ρ relaxation-time fitting
+- T1 inversion-recovery fitting
+- T2 mono-exponential relaxation fitting
+- T1ρ relaxation fitting
+- Pixel-wise quantitative T2 mapping
 - ROI-based quantitative analysis
 - Relative relaxation-time difference (RRTD) calculation
-- Basic visualization and statistical analysis of quantitative MRI data
-- Pixel-wise quantitative relaxation mapping using synthetic MRI data
+- Basic statistical analysis and visualization of quantitative MRI data
 
 ## Programming
 
-- MATLAB
 - Python
+- MATLAB
+
+Python examples use NumPy, SciPy, and Matplotlib for numerical analysis, nonlinear fitting, and visualization.
 
 ## Research Background
 
-My research focuses on quantitative MRI for tissue characterization, with experience in rotating-frame relaxation methods (RAFF and T1ρ), conventional relaxation mapping, high-resolution ex vivo MRI, histological validation, and in vivo cardiac MRI.
+My research focuses on quantitative MRI for tissue characterization, including rotating-frame relaxation methods (RAFF and T1ρ), conventional relaxation mapping, high-resolution ex vivo MRI, histological validation, and in vivo cardiac MRI.
+
+My work has involved the development and application of MATLAB- and Python-based analysis workflows for quantitative MRI data.
 
 ## Data
 
-Only synthetic or publicly shareable example data are included in this repository. No patient data, identifiable information, or restricted research data are provided.
+All examples in this repository use synthetic data. No patient data, identifiable information, restricted research data, or proprietary acquisition code are included.
 
 ## Author
 
 Yi Li  
 Doctoral Researcher  
+Research Unit of Health Sciences and Technology  
 University of Oulu, Finland
