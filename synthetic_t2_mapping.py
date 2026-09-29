@@ -31,9 +31,9 @@ s0_true = np.zeros((image_size, image_size), dtype=float)
 # Create coordinate grid
 y, x = np.ogrid[:image_size, :image_size]
 
-# Two circular tissue regions
-region_1 = (x - 22) ** 2 + (y - 32) ** 2 <= 12 ** 2
-region_2 = (x - 44) ** 2 + (y - 32) ** 2 <= 12 ** 2
+# Two non-overlapping circular tissue regions
+region_1 = (x - 20) ** 2 + (y - 32) ** 2 <= 10 ** 2
+region_2 = (x - 44) ** 2 + (y - 32) ** 2 <= 10 ** 2
 
 # Assign ground-truth T2 values
 t2_true[region_1] = 40.0  # ms
@@ -42,6 +42,9 @@ t2_true[region_2] = 70.0  # ms
 # Assign proton-density-like signal amplitude
 s0_true[region_1] = 1000.0
 s0_true[region_2] = 1000.0
+
+# Define foreground mask
+mask = t2_true > 0
 
 
 # ------------------------------------------------------------
@@ -56,8 +59,6 @@ signals = np.zeros(
 )
 
 for i, echo_time in enumerate(te):
-    mask = t2_true > 0
-
     signals[i, mask] = (
         s0_true[mask]
         * np.exp(-echo_time / t2_true[mask])
@@ -71,6 +72,7 @@ for i, echo_time in enumerate(te):
 rng = np.random.default_rng(seed=42)
 
 noise_std = 20.0
+
 noise = rng.normal(
     0,
     noise_std,
@@ -92,11 +94,11 @@ t2_estimated = np.zeros(
 for row in range(image_size):
     for col in range(image_size):
 
-        signal = signals_noisy[:, row, col]
-
         # Skip background pixels
-        if s0_true[row, col] == 0:
+        if not mask[row, col]:
             continue
+
+        signal = signals_noisy[:, row, col]
 
         initial_guess = [
             np.max(signal),
@@ -117,7 +119,7 @@ for row in range(image_size):
 
             t2_estimated[row, col] = estimated_t2
 
-        except RuntimeError:
+        except (RuntimeError, ValueError):
             t2_estimated[row, col] = np.nan
 
 
@@ -134,6 +136,7 @@ print("Region 2: 70 ms")
 print()
 
 print("Estimated T2 values:")
+
 print(
     f"Region 1: "
     f"{np.nanmean(region_1_values):.1f} ± "
@@ -151,13 +154,13 @@ print(
 # 6. Visualize results
 # ------------------------------------------------------------
 
-plt.figure(figsize=(6, 5))
-
 display_map = np.where(
-    t2_estimated > 0,
+    mask,
     t2_estimated,
     np.nan,
 )
+
+plt.figure(figsize=(6, 5))
 
 image = plt.imshow(
     display_map,
