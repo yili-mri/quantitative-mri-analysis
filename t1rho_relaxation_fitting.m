@@ -104,4 +104,3 @@ legend('Synthetic data', 'T1rho fit');
 
 grid on;
 
-grid on;
