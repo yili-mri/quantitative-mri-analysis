@@ -2,7 +2,7 @@
 
 This repository contains example analysis workflows for quantitative MRI and relaxation mapping.
 
-The examples are based on generalized workflows used in my research on quantitative tissue characterization. They demonstrate relaxation-time fitting, quantitative tissue comparison, ROI-based analysis, and pixel-wise relaxation mapping using synthetic data.
+The examples are based on generalized workflows used in my research on quantitative tissue characterization. They demonstrate relaxation-time fitting, quantitative tissue comparison, ROI-based analysis, pixel-wise relaxation mapping, and basic fit-quality assessment using synthetic data.
 
 ## Methods
 
@@ -10,18 +10,35 @@ Example implementations include:
 
 - T1 inversion-recovery fitting
 - T2 mono-exponential relaxation fitting
-- T1ρ relaxation fitting
+- T1ρ mono-exponential relaxation fitting
 - Pixel-wise quantitative T2 mapping
+- Pixel-wise quantitative T1ρ mapping
+- Pixel-wise goodness-of-fit assessment
 - ROI-based quantitative analysis
 - Relative relaxation-time difference (RRTD) calculation
 - Basic statistical analysis and visualization of quantitative MRI data
 
-## Programming
+## Python
 
-- Python
-- MATLAB
+Python examples include:
 
-Python examples use NumPy, SciPy, and Matplotlib for numerical analysis, nonlinear fitting, and visualization.
+- T1, T2, and T1ρ relaxation-time fitting
+- Synthetic pixel-wise T2 mapping
+- Synthetic pixel-wise T1ρ mapping with R² fit-quality assessment
+- Relative relaxation-time difference analysis
+
+The Python implementations use NumPy, SciPy, and Matplotlib for numerical analysis, nonlinear fitting, and visualization.
+
+## MATLAB
+
+MATLAB examples include:
+
+- T1 inversion-recovery fitting
+- T2 relaxation-time fitting
+- T1ρ relaxation-time fitting
+- Synthetic pixel-wise T2 mapping
+
+The MATLAB examples demonstrate nonlinear relaxation fitting, quantitative mapping, and visualization using synthetic MRI data.
 
 ## Research Background
 
