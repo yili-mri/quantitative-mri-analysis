@@ -56,3 +56,8 @@ Yi Li
 Doctoral Researcher  
 Research Unit of Health Sciences and Technology  
 University of Oulu, Finland
+
+
+## T1rho preparation simulation
+
+A compact exploratory MATLAB project on CW-T1rho preparation design is available in [`t1rho-preparation-simulation/`](./t1rho-preparation-simulation/). It includes single-pool Bloch robustness simulations and a generic two-pool Bloch-McConnell analysis of preparation-dependent apparent T1rho and tissue contrast. The final analysis emphasizes the distinction between normalized RRTD changes and absolute target-reference contrast changes, with explicit fit-quality filtering.
